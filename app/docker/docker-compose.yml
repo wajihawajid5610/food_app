@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: wajihawajid577
+      POSTGRES_PASSWORD: piaic5610
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
