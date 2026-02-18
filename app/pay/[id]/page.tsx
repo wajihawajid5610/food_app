@@ -1,5 +1,4 @@
 "use client";
-"use client";
 
 import React, { useEffect, useState } from "react";
 import CheckoutForm from "@/app/components/CheckoutForm";
@@ -57,4 +56,3 @@ const PayPage = ({ params }: { params: Promise<{ id: string }> }) => {
 };
 
 export default PayPage;
-

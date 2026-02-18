@@ -1,4 +1,3 @@
-
 import prisma from "@/app/utils/connection"
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
