@@ -1,7 +1,8 @@
  
 import prisma from "@/app/utils/connection"
 import { NextRequest, NextResponse } from "next/server";
-import { Product } from '@/app/generated/prisma';
+//import { Product } from '@/app/generated/prisma';
+import type { Product } from '@prisma/client';
 // Fetch all Products..... ok
 
 /* export const GET = async (req: NextRequest) => {
