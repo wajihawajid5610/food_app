@@ -28,6 +28,7 @@ export const PUT = async ({ params }: { params: { intentId: string } }) => {
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/utils/connection";
 
+
 export const PUT = async (
   request: NextRequest,
   { params }: { params: Promise<{ intentId: string }> }

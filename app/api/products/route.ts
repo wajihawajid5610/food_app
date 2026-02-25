@@ -1,10 +1,10 @@
  
 import prisma from "@/app/utils/connection"
 import { NextRequest, NextResponse } from "next/server";
-
+import { Product } from '@/app/generated/prisma';
 // Fetch all Products..... ok
 
-export const GET = async (req: NextRequest) => {
+/* export const GET = async (req: NextRequest) => {
 
     const { searchParams } = new URL(req.url)
     const cat = searchParams.get("cat")
@@ -30,8 +30,32 @@ export const GET = async (req: NextRequest) => {
         );
     }
 
-  } 
- 
+  }  */
+ export const GET = async (req: Request) => {
+  const { searchParams } = new URL(req.url);
+  const cat = searchParams.get("cat");
+
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        ...(cat ? { catSlug: cat } : { isFeatured: true }),
+      },
+    });
+
+   const safeProducts = products.map((product: Product) => ({
+  ...product,
+  price: product.price.toString(), // 🔥 important (Decimal → string for JSON)
+}));
+
+    return NextResponse.json(safeProducts);
+  } catch (error) {
+    console.error("API ERROR:", error);
+    return NextResponse.json(
+      { message: "Something went wrong" },
+      { status: 500 }
+    );
+  }
+};
 
   export const POST= async(req:NextRequest)=>{
     try {

@@ -10,6 +10,7 @@
     "dev:db": "docker compose up -d",
     "postinstall": "prisma generate",
     "vercel-build": "prisma generate && prisma migrate deploy && next build"
+
   
 },
 "dependencies": {
